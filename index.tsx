@@ -1,10 +1,12 @@
-import ReactPDF, {
+import {
   Document,
   Font,
   Page,
   StyleSheet,
   Text,
   View,
+  renderToFile,
+  renderToStream,
 } from "@react-pdf/renderer";
 import * as React from "react";
 
@@ -334,4 +336,9 @@ export default function PDF() {
   );
 }
 
-ReactPDF.render(<PDF />, "./example.pdf");
+renderToFile(<PDF />, "./example.pdf");
+
+(async () => {
+  const stream = await renderToStream(<PDF />);
+  stream.pipe(process.stdout);
+})();
