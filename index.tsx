@@ -314,6 +314,8 @@ export default function PDF() {
               <Text style={styles.tableColHeader}>金額</Text>
             </View>
             {data[0].items.map((item, index) => (
+              // ハイフネーションをコントロールするワークアラウンド
+              // https://github.com/diegomura/react-pdf/issues/419
               <View style={styles.tableRow} key={index} wrap={false}>
                 {/* <Text
                   style={styles.tableCol}
