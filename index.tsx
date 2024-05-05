@@ -8,6 +8,14 @@ import ReactPDF, {
 } from "@react-pdf/renderer";
 import * as React from "react";
 
+// function wordBreak(text) {
+//   return Array.from(
+//     new Intl.Segmenter("ja", {
+//       granularity: "word",
+//     }).segment(text)
+//   );
+// }
+
 Font.register({
   family: "NotoSansJP",
   fonts: [
@@ -86,7 +94,14 @@ const data = [
     value: "2024/4/01",
     items: [
       {
-        name: "サンプル1",
+        name: "サンプル1サンプル1サンプル1サンプル1",
+        surface: "1",
+        thickness: "式",
+        width: "10,000",
+        length: "10,000",
+      },
+      {
+        name: "aiueoaiueoaiueoaiueoaiueoaiueoaiueoaiueo",
         surface: "1",
         thickness: "式",
         width: "10,000",
@@ -292,7 +307,20 @@ export default function PDF() {
             </View>
             {data[0].items.map((item, index) => (
               <View style={styles.tableRow} key={index} wrap={false}>
-                <Text style={styles.tableCol}>{item.name}</Text>
+                {/* <Text
+                  style={styles.tableCol}
+                  hyphenationCallback={(word) => [word, ""]}
+                >
+                  {wordBreak(item.name).map(({ segment }) => segment)}
+                </Text> */}
+                <Text
+                  style={styles.tableCol}
+                  hyphenationCallback={(word) =>
+                    Array.from(word).flatMap((char) => [char, ""])
+                  }
+                >
+                  {item.name}
+                </Text>
                 <Text style={styles.tableCol}>{item.surface}</Text>
                 <Text style={styles.tableCol}>{item.thickness}</Text>
                 <Text style={styles.tableCol}>{item.width}</Text>
