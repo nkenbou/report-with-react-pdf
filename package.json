@@ -6,16 +6,18 @@
   "scripts": {
     "dev": "ncc build index.tsx --target es2021 -w",
     "build": "ncc build index.tsx --target es2021 -m",
-    "test": "ncc run index.tsx --target es2021"
+    "test": "ncc run index.tsx --target es2021",
+    "clean": "ncc cache clean"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "volta": {
-    "node": "20.10.0",
-    "npm": "10.2.5"
+    "node": "20.12.2",
+    "npm": "10.7.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.8",
     "@vercel/ncc": "^0.38.1",
     "typescript": "^5.4.5"
   },
