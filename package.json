@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ncc build index.tsx --target es2021 -w",
     "build": "ncc build index.tsx --target es2021 -m",
-    "test": "ncc run index.tsx --target es2021",
+    "test": "NODE_ENV=development ncc run index.tsx --target es2021",
     "clean": "ncc cache clean"
   },
   "keywords": [],

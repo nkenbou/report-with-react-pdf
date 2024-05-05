@@ -8,6 +8,7 @@ import {
   renderToFile,
   renderToStream,
 } from "@react-pdf/renderer";
+import path from "node:path";
 import * as React from "react";
 
 // function wordBreak(text) {
@@ -18,14 +19,19 @@ import * as React from "react";
 //   );
 // }
 
+const fontsDir =
+  process.env.NODE_ENV === "development"
+    ? "./fonts"
+    : path.join(__dirname, "./fonts");
+
 Font.register({
   family: "NotoSansJP",
   fonts: [
     {
-      src: "./fonts/NotoSansJP-Regular.ttf",
+      src: path.join(fontsDir, "./NotoSansJP-Regular.ttf"),
     },
     {
-      src: "./fonts/NotoSansJP-Bold.ttf",
+      src: path.join(fontsDir, "./NotoSansJP-Bold.ttf"),
       fontWeight: "bold",
     },
   ],
